@@ -1,0 +1,14 @@
+Source: llx-network-config
+Section: admin
+Priority: optional
+Maintainer: Equipo LliureX <lliurex@gva.es>
+Uploaders: Angel Berlanas Vicente <lliurex_devel2@edu.gva.es>, Raul Rodrigo Segura <lliurex_devel3@edu.gva.es>, Alfons Lloret Sananton <lliurex_devel5@edu.gva.es>, Enrique Medina Gremaldos <lliurex_devel4@edu.gva.es>, David Montalva Furio <montalva_dav@gva.es>, Hector Garcia Huerta <lliurex_devel1@edu.gva.es>
+Build-Depends: llxsrchelper,debhelper (>= 7.0), llxcfg-dev (>= 1:10.09.20), zero-dev, librsvg2-bin
+Standards-Version: 3.9.3
+
+Package: llx-network-config
+Architecture: all
+Depends: ${misc:Depends}, zero-server-wizard , n4d, python, llxcfg-runtime 
+Description: Lliurex Network Configuration
+ Gui to allow to edit network configuration after
+ server initialization.
