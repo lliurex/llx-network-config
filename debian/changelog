@@ -1,3 +1,9 @@
+llx-network-config (0.7.12) bionic; urgency=medium
+
+  * Initial release for bionic
+
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Wed, 17 Oct 2018 14:30:04 +0200
+
 llx-network-config (0.7.2) xenial; urgency=medium
 
   * Fix minor bugs with translations
