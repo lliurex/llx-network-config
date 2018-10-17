@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+<id>llx-network-config_zmd</id>
+<metadata_license>CC0-1.0</metadata_license>
+<name>Network configuration</name>
+<name xml:lang="es">Configuración de la red</name>
+<name xml:lang="ca_ES@valencia">Configuració de la xarxa</name>
+<summary>Allows to edit server network configuration after initialization</summary>
+<summary xml:lang="es">Permite editar la configuración de red del servidor tras la inicialización</summary>
+<summary xml:lang="ca_ES@valencia">Permet editar la configuració de xarxa del servidor després d'inicialitzar-lo</summary>
+<description>
+<p>Allows to edit server network configuration after initialization</p>
+<p xml:lang="es">Permite editar la configuración de red del servidor tras la inicialización</p>
+<p xml:lang="ca_ES@valencia">Permet editar la configuració de xarxa del servidor després d'inicialitzar-lo</p>
+</description>
+<categories>
+<category>Lliurex</category>
+<category>Zomando</category>
+<category>Utility</category>
+</categories>
+<icon type="cached">llx-network-config</icon>
+
+<keywords>
+<keyword>llx</keyword>
+<keyword>network</keyword>
+<keyword>config</keyword>
+<keyword>Network</keyword>
+<keyword>configuration</keyword>
+<keyword>Zomando</keyword>
+</keywords>
+<keywords xml:lang="es">
+<keyword>Configuración</keyword>
+<keyword>red</keyword>
+<keyword>Zomando</keyword>
+</keywords>
+<keywords xml:lang="ca_ES@valencia">
+<keyword>Configuració</keyword>
+<keyword>xarxa</keyword>
+<keyword>Zomando</keyword>
+
+</keywords>
+</component>

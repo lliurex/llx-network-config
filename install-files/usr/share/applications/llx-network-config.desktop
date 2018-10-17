@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Network configuration
+Name[es]=Configuración de la red
+Name[ca_ES@valencia]=Configuració de la xarxa
+Comment=Allows to edit server network configuration after initialization
+Comment[es]=Permite editar la configuración de red del servidor tras la inicialización
+Comment[ca_ES@valencia]=Permet editar la configuració de xarxa del servidor després d'inicialitzar-lo
+Exec= pe llx-network-config.zmd
+Terminal=false
+Icon=llx-netconf
+Type=Application
+GenericName=llx-netconf
+NoDisplay=true
+Categories=Network;

@@ -1,0 +1,13 @@
+Name=Network configuration
+Name[es]=Configuración de la red
+Name[ca_ES@valencia]=Configuració de la xarxa
+Comment=Allows to edit server network configuration after initialization
+Comment[es]=Permite editar la configuración de red del servidor tras la inicialización
+Comment[ca_ES@valencia]=Permet editar la configuració de xarxa del servidor després d'inicialitzar-lo
+Icon=llx-network-config
+Groups=admins;adm
+Category=network
+ScriptPath=llx-network-config.zmd
+Using=pe 
+Modal=True
+Depends=zero-server-wizard

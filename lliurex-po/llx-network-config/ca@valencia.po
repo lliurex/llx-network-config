@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# lliurex <lliurex16@gmail.com>, 2018.
+# Empar <montoro_mde@gva.es>, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-26 10:39+0200\n"
+"PO-Revision-Date: 2018-09-26 11:59+0200\n"
+"Last-Translator: Empar <montoro_mde@gva.es>\n"
+"Language-Team: LliureX Team\n"
+"Language: qcv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:37
+#: install-files/usr/share/llx-network-config/llx-network-config.py:150
+#: install-files/usr/share/llx-network-config/llx-network-config.py:416
+#: install-files/usr/share/llx-network-config/llx-network-config.py:431
+#: install-files/usr/share/llx-network-config/llx-network-config.py:445
+msgid "Network Configuration"
+msgstr "Configuració de xarxa"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:37
+msgid "Network reconfiguration is only allowed on independent servers"
+msgstr "La recongiguració de xarxa sols es permet en servidors independents"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:83
+msgid "<sup>Internal IP</sup>"
+msgstr "<sup>Ip Interna</sup>"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:85
+msgid "<sup>Internal mask</sup>"
+msgstr "<sup>Màscara interna</sup>"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:96
+msgid "<sup>External configuration mode</sup>"
+msgstr "<sup>Mode de configuració externa</sup>"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:112
+msgid "<sup>Manual options</sup>"
+msgstr "<sup>Configuració manual</sup>"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:115
+msgid "<sup>External IP</sup>"
+msgstr "<sup>IP externa</sup>"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:117
+msgid "<sup>External mask</sup>"
+msgstr "<sup>Màscara externa</sup>"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:119
+msgid "<sup>External gateway</sup>"
+msgstr "<sup>Porta d'enllaç externa</sup>"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:130
+msgid "<sup>DNS</sup>"
+msgstr "<sup>DNS</sup>"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:150
+#: install-files/usr/share/llx-network-config/llx-network-config.py:416
+msgid "Error getting values."
+msgstr "Error en obtenir valors"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:260
+#, python-format
+msgid "<sup>Internal interface %s</sup>"
+msgstr "<sup>Interfície interna %s</sup>"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:262
+#, python-format
+msgid "<sup>External interface %s</sup>"
+msgstr "<sup>Interfície externa %s</sup>"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:341
+msgid "You don't have root privileges to run this program"
+msgstr "No teniu permisos de root per executar aquest programa."
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:344
+msgid "Internal and external interfaces must be different"
+msgstr "Les interfícies interna i externa han de ser diferents."
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:347
+msgid "Internal IP"
+msgstr "IP interna"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:348
+msgid "Internal mask"
+msgstr "Màscara interna"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:349
+msgid "External IP"
+msgstr "IP externa"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:350
+msgid "External mask"
+msgstr "Màscara externa"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:351
+msgid "Gateway"
+msgstr "Porta d'enllaç"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:352
+msgid "DNS #1"
+msgstr "DNS #1"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:353
+msgid "DNS #2"
+msgstr "DNS #2"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:358
+#, python-format
+msgid "'<b>%s</b>' must be a valid ip"
+msgstr "'<b>%s</b>' ha de ser una IP vàlida"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:445
+msgid "Configuration finished."
+msgstr "Configuració finalitzada"

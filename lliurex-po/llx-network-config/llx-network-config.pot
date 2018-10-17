@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-26 10:39+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:37
+#: install-files/usr/share/llx-network-config/llx-network-config.py:150
+#: install-files/usr/share/llx-network-config/llx-network-config.py:416
+#: install-files/usr/share/llx-network-config/llx-network-config.py:431
+#: install-files/usr/share/llx-network-config/llx-network-config.py:445
+msgid "Network Configuration"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:37
+msgid "Network reconfiguration is only allowed on independent servers"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:83
+msgid "<sup>Internal IP</sup>"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:85
+msgid "<sup>Internal mask</sup>"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:96
+msgid "<sup>External configuration mode</sup>"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:112
+msgid "<sup>Manual options</sup>"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:115
+msgid "<sup>External IP</sup>"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:117
+msgid "<sup>External mask</sup>"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:119
+msgid "<sup>External gateway</sup>"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:130
+msgid "<sup>DNS</sup>"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:150
+#: install-files/usr/share/llx-network-config/llx-network-config.py:416
+msgid "Error getting values."
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:260
+#, python-format
+msgid "<sup>Internal interface %s</sup>"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:262
+#, python-format
+msgid "<sup>External interface %s</sup>"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:341
+msgid "You don't have root privileges to run this program"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:344
+msgid "Internal and external interfaces must be different"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:347
+msgid "Internal IP"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:348
+msgid "Internal mask"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:349
+msgid "External IP"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:350
+msgid "External mask"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:351
+msgid "Gateway"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:352
+msgid "DNS #1"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:353
+msgid "DNS #2"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:358
+#, python-format
+msgid "'<b>%s</b>' must be a valid ip"
+msgstr ""
+
+#: install-files/usr/share/llx-network-config/llx-network-config.py:445
+msgid "Configuration finished."
+msgstr ""
