@@ -8,6 +8,6 @@ Icon=llx-network-config
 Groups=admins;adm
 Category=network
 ScriptPath=llx-network-config.zmd
-Using=pe 
+Using=pkexec
 Modal=True
 Depends=zero-server-wizard
