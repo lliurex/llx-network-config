@@ -396,9 +396,6 @@ class NetworkConfig:
 		print("OK")
 		msg="* Restarting services ... "
 		sys.stdout.write(msg)
-		os.system("systemctl stop NetworkManager.service")
-		os.system("systemctl mask NetworkManager.service") 			
-		os.system("systemctl restart networking.service")		
 		os.system("systemctl restart dnsmasq.service")		
 		os.system("systemctl restart squid.service")		
 		os.system("systemctl restart n4d.service")		
