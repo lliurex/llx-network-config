@@ -1,3 +1,9 @@
+llx-network-config (0.8.1) bionic; urgency=medium
+
+  * Change callback
+
+ -- Raul Rodrigo Segura <raurodse@gmail.com>  Tue, 23 Oct 2018 14:18:43 +0200
+
 llx-network-config (0.8) bionic; urgency=medium
 
   * Migrating to netplan
