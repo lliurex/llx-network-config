@@ -206,7 +206,7 @@ class NetworkConfig:
 			else:
 				self.external_combobox.set_active(0)
 			
-			if self.client.is_static("","NetworkManager",external):
+			if self.client.is_static("","NetworkManager",external)['result']:
 				self.manual_radiobutton.set_active(True)
 
 			ip=lliurex.net.get_ip(internal)
