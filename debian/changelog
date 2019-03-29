@@ -1,3 +1,9 @@
+llx-network-config (0.8.2) bionic; urgency=medium
+
+  * Fix metainfo
+
+ -- Juanma Navarro Mañez <juanma1980@gmail.com>  Fri, 29 Mar 2019 14:17:46 +0100
+
 llx-network-config (0.8.1) bionic; urgency=medium
 
   * Change callback
