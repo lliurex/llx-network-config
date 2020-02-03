@@ -1,11 +1,12 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import os
 import os.path
 import multiprocessing
 import time
 import random
-import xmlrpclib
+import xmlrpc.client
+import ssl
 import cairo
 import grp
 import sys
@@ -30,11 +31,13 @@ MARGIN=6
 class NetworkConfig:
 	
 	def __init__(self):
-		
-		self.client=xmlrpclib.ServerProxy("https://localhost:9779")
+
+		context=ssl._create_unverified_context()
+		self.client=xmlrpc.client.ServerProxy("https://localhost:9779",allow_none=True,context=context)
 		try:
 			if self.client.get_variable("","VariablesManager","INTERFACE_REPLICATION")!=None:
 				self.open_dialog(_("Network Configuration"),_("Network reconfiguration is only allowed on independent servers"),"dialog-information")
+				#self.start_gui()
 			else:
 				self.start_gui()
 		except Exception as e:
@@ -376,7 +379,7 @@ class NetworkConfig:
 
 		msg="* Executing 015-network ... "
 		sys.stdout.write(msg)
-		execfile("/usr/share/zero-server-wizard/types/independent/actions/015-network.py",locals())
+		exec(compile(open("/usr/share/zero-server-wizard/types/independent/actions/015-network.py").read(), "/usr/share/zero-server-wizard/types/independent/actions/015-network.py", 'exec'),locals())
 
 		print("OK")
 		msg="* Executing slapd open ports configuration ... "
@@ -385,11 +388,11 @@ class NetworkConfig:
 		print("OK")
 		msg="* Executing 050-dnsmasq ... "
 		sys.stdout.write(msg)
-		execfile("/usr/share/zero-server-wizard/types/independent/actions/050-dnsmasq.py",locals())
+		exec(compile(open("/usr/share/zero-server-wizard/types/independent/actions/050-dnsmasq.py").read(), "/usr/share/zero-server-wizard/types/independent/actions/050-dnsmasq.py", 'exec'),locals())
 		print("OK")
 		msg="* Executing 060-proxy ... "
 		sys.stdout.write(msg)
-		execfile("/usr/share/zero-server-wizard/types/independent/actions/060-proxy.py",locals())
+		exec(compile(open("/usr/share/zero-server-wizard/types/independent/actions/060-proxy.py").read(), "/usr/share/zero-server-wizard/types/independent/actions/060-proxy.py", 'exec'),locals())
 		print("OK")
 		msg="* Restarting services ... "
 		sys.stdout.write(msg)
