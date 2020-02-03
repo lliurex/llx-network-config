@@ -1,3 +1,9 @@
+llx-network-config (0.8.4) bionic; urgency=medium
+
+  * Migrate to python3
+
+ -- Daniel Duran Vecino <daduve@gmail.com>  Mon, 03 Feb 2020 13:39:53 +0100
+
 llx-network-config (0.8.3) bionic; urgency=medium
 
   * Adding sudo group
