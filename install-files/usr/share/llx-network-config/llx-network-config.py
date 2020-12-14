@@ -1,12 +1,13 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 
 import os
 import os.path
 import multiprocessing
 import time
 import random
-import xmlrpc.client
-import ssl
+#import xmlrpc.client
+import xmlrpclib
+#import ssl
 import cairo
 import grp
 import sys
@@ -32,8 +33,9 @@ class NetworkConfig:
 	
 	def __init__(self):
 
-		context=ssl._create_unverified_context()
-		self.client=xmlrpc.client.ServerProxy("https://localhost:9779",allow_none=True,context=context)
+			#context=ssl._create_unverified_context()
+		#self.client=xmlrpc.client.ServerProxy("https://localhost:9779",allow_none=True,context=context)
+		self.client=xmlrpclib.ServerProxy("https://localhost:9779",allow_none=True)
 		try:
 			if self.client.get_variable("","VariablesManager","INTERFACE_REPLICATION")!=None:
 				self.open_dialog(_("Network Configuration"),_("Network reconfiguration is only allowed on independent servers"),"dialog-information")
