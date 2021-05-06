@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import os
 import os.path
@@ -6,8 +6,10 @@ import multiprocessing
 import time
 import random
 #import xmlrpc.client
-import xmlrpclib
+#import xmlrpclib
 #import ssl
+import n4d.client as n4d
+import n4d.responses as responses
 import cairo
 import grp
 import sys
@@ -35,9 +37,16 @@ class NetworkConfig:
 
 			#context=ssl._create_unverified_context()
 		#self.client=xmlrpc.client.ServerProxy("https://localhost:9779",allow_none=True,context=context)
-		self.client=xmlrpclib.ServerProxy("https://localhost:9779",allow_none=True)
+		#self.client=xmlrpclib.ServerProxy("https://localhost:9779",allow_none=True)
+		masterKey=self.get_n4d_key()
+		if not masterKey:
+			self.open_dialog(_("Network Configuration"),_("You don't have root privileges to run this program"))
+			sys.exit(1)
+		n4dKey=n4d.Key(masterKey)
+		n4dCred=n4d.Credential(key=n4dKey)
+		self.client=n4d.Client("https://localhost:9779",credential=n4dCred)
 		try:
-			if self.client.get_variable("","VariablesManager","INTERFACE_REPLICATION")!=None:
+			if self.client.get_variable("INTERFACE_REPLICATION")!=None:
 				self.open_dialog(_("Network Configuration"),_("Network reconfiguration is only allowed on independent servers"),"dialog-information")
 				#self.start_gui()
 			else:
@@ -168,11 +177,11 @@ class NetworkConfig:
 	def set_default_gui_values(self):
 
 		try:
-			var=self.client.get_variables("","VariablesManager")
-			internal=var["INTERNAL_INTERFACE"]["value"]
-			external=var["EXTERNAL_INTERFACE"]["value"]
-			dns1=var["DNS_EXTERNAL"]["value"][0]
-			dns2=var["DNS_EXTERNAL"]["value"][1]
+			var=self.client.get_variables()
+			internal=var["INTERNAL_INTERFACE"]
+			external=var["EXTERNAL_INTERFACE"]
+			dns1=var["DNS_EXTERNAL"][0]
+			dns2=var["DNS_EXTERNAL"][1]
 		
 	
 			self.iiface_model=Gtk.ListStore(str)
@@ -210,8 +219,8 @@ class NetworkConfig:
 				self.external_combobox.set_active(e_id)
 			else:
 				self.external_combobox.set_active(0)
-			
-			if self.client.is_static("","NetworkManager",external)['result']:
+			proxy=n4d.Proxy(self.client,"NetworkManager","is_static")
+			if proxy.call(external):
 				self.manual_radiobutton.set_active(True)
 
 			ip=lliurex.net.get_ip(internal)
@@ -294,9 +303,9 @@ class NetworkConfig:
 		
 		var={}
 		try:
-			tmp=self.client.get_variables("","VariablesManager")
-			var["srv_domain_name"]=tmp["INTERNAL_DOMAIN"]["value"]
-			var["srv_name"]=tmp["HOSTNAME"]["value"]
+			tmp=self.client.get_variables()
+			var["srv_domain_name"]=tmp["INTERNAL_DOMAIN"]
+			var["srv_name"]=tmp["HOSTNAME"]
 			
 			var["masterkey"]=self.get_n4d_key()
 			var["remote_ip"]="localhost"
@@ -386,6 +395,7 @@ class NetworkConfig:
 		print("OK")
 		msg="* Executing slapd open ports configuration ... "
 		sys.stdout.write(msg)
+
 		self.client.open_ports_slapd(self.template["masterkey"],"SlapdManager",self.template["srv_ip"])
 		print("OK")
 		msg="* Executing 050-dnsmasq ... "
