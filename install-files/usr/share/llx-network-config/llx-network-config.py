@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import os
 import os.path
@@ -6,8 +6,10 @@ import multiprocessing
 import time
 import random
 #import xmlrpc.client
-import xmlrpclib
+#import xmlrpclib
 #import ssl
+import n4d.client as n4d
+import n4d.responses as responses
 import cairo
 import grp
 import sys
@@ -35,9 +37,10 @@ class NetworkConfig:
 
 			#context=ssl._create_unverified_context()
 		#self.client=xmlrpc.client.ServerProxy("https://localhost:9779",allow_none=True,context=context)
-		self.client=xmlrpclib.ServerProxy("https://localhost:9779",allow_none=True)
+		#self.client=xmlrpclib.ServerProxy("https://localhost:9779",allow_none=True)
+		self.client=n4d.Client("https://localhost:9779")
 		try:
-			if self.client.get_variable("","VariablesManager","INTERFACE_REPLICATION")!=None:
+			if self.client.get_variable("INTERFACE_REPLICATION")!=None:
 				self.open_dialog(_("Network Configuration"),_("Network reconfiguration is only allowed on independent servers"),"dialog-information")
 				#self.start_gui()
 			else:
@@ -168,11 +171,12 @@ class NetworkConfig:
 	def set_default_gui_values(self):
 
 		try:
-			var=self.client.get_variables("","VariablesManager")
-			internal=var["INTERNAL_INTERFACE"]["value"]
-			external=var["EXTERNAL_INTERFACE"]["value"]
-			dns1=var["DNS_EXTERNAL"]["value"][0]
-			dns2=var["DNS_EXTERNAL"]["value"][1]
+			var=self.client.get_variables()
+			print(var)
+			internal=var["INTERNAL_INTERFACE"]
+			external=var["EXTERNAL_INTERFACE"]
+			dns1=var["DNS_EXTERNAL"][0]
+			dns2=var["DNS_EXTERNAL"][1]
 		
 	
 			self.iiface_model=Gtk.ListStore(str)
@@ -294,7 +298,10 @@ class NetworkConfig:
 		
 		var={}
 		try:
-			tmp=self.client.get_variables("","VariablesManager")
+			tmp=self.client.get_variables()
+			print("*********")
+			print(tmp)
+			print("*********")
 			var["srv_domain_name"]=tmp["INTERNAL_DOMAIN"]["value"]
 			var["srv_name"]=tmp["HOSTNAME"]["value"]
 			
