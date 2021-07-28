@@ -46,14 +46,15 @@ class NetworkConfig:
 		n4dCred=n4d.Credential(key=n4dKey)
 		self.client=n4d.Client("https://localhost:9779",credential=n4dCred)
 		try:
-			if self.client.get_variable("INTERFACE_REPLICATION")!=None:
-				self.open_dialog(_("Network Configuration"),_("Network reconfiguration is only allowed on independent servers"),"dialog-information")
-				#self.start_gui()
-			else:
-				self.start_gui()
+			replicant=self.client.get_variable("INTERFACE_REPLICATION")
+		except n4d.CallFailedError:
+			replicant=None
 		except Exception as e:
-			print(e)
-			pass
+			self.open_dialog(_("Network Configuration"),_("{}".format(e)),"dialog-information")
+		if replicant!=None:
+			self.open_dialog(_("Network Configuration"),_("Network reconfiguration is only allowed on independent servers"),"dialog-information")
+		else:
+			self.start_gui()
 		
 		
 	#def init
@@ -77,15 +78,15 @@ class NetworkConfig:
 		pb=GdkPixbuf.Pixbuf.new_from_file(banner)
 		img_banner=Gtk.Image.new_from_pixbuf(pb)
 		img_banner.props.halign=Gtk.Align.CENTER
-		img_banner.set_margin_left(MARGIN*2)
+		img_banner.set_margin_start(MARGIN*2)
 		img_banner.set_hexpand(True)
 #		img_banner.set_vexpand(True)
 
 		grid=Gtk.Grid()
 		grid.set_hexpand(True)
 		grid.set_vexpand(True)
-		grid.set_margin_left(MARGIN)
-		grid.set_margin_right(MARGIN)
+		grid.set_margin_start(MARGIN)
+		grid.set_margin_end(MARGIN)
 		grid.set_margin_top(MARGIN)
 		grid.set_margin_bottom(MARGIN)
 		grid.set_row_spacing(MARGIN)
@@ -182,55 +183,54 @@ class NetworkConfig:
 			external=var["EXTERNAL_INTERFACE"]
 			dns1=var["DNS_EXTERNAL"][0]
 			dns2=var["DNS_EXTERNAL"][1]
+		except Exception as e:
+			self.open_dialog(_("Network Configuration"),_("{}".format(e)),"dialog-information")
 		
-	
-			self.iiface_model=Gtk.ListStore(str)
-			self.eiface_model=Gtk.ListStore(str)
-		
-			self.internal_combobox.set_model(self.iiface_model)
-			self.external_combobox.set_model(self.eiface_model)
-			rendi=Gtk.CellRendererText()
-			self.internal_combobox.pack_start(rendi,True)
-			self.internal_combobox.add_attribute(rendi,"text",0)
-			self.internal_combobox.connect("changed",self.get_link_speed,0)
-			rende=Gtk.CellRendererText()
-			self.external_combobox.pack_start(rende,True)
-			self.external_combobox.add_attribute(rende,"text",0)
-			self.external_combobox.connect("changed",self.get_link_speed,1)
+		self.iiface_model=Gtk.ListStore(str)
+		self.eiface_model=Gtk.ListStore(str)
+		self.internal_combobox.set_model(self.iiface_model)
+		self.external_combobox.set_model(self.eiface_model)
+		rendi=Gtk.CellRendererText()
+		self.internal_combobox.pack_start(rendi,True)
+		self.internal_combobox.add_attribute(rendi,"text",0)
+		self.internal_combobox.connect("changed",self.get_link_speed,0)
+		rende=Gtk.CellRendererText()
+		self.external_combobox.pack_start(rende,True)
+		self.external_combobox.add_attribute(rende,"text",0)
+		self.external_combobox.connect("changed",self.get_link_speed,1)
+
+		try:
 			self.interfaces=lliurex.net.get_devices_info()		
+		except:
+			self.interfaces=[]
 		
-			count=0
-			i_id=0
-			e_id=0
-			for item in self.interfaces:
-				if "eth" in item["name"]:
-					self.iiface_model.append([item["name"]])
-					if item["name"]==internal:
-						i_id=count
-					self.eiface_model.append([item["name"]])
-					if item["name"]==external:
-						e_id=count
-				count+=1
+		count=0
+		i_id=0
+		e_id=0
+		for item in self.interfaces:
+			if "eth" in item["name"]:
+				self.iiface_model.append([item["name"]])
+				if item["name"]==internal:
+					i_id=count
+				self.eiface_model.append([item["name"]])
+				if item["name"]==external:
+					e_id=count
+			count+=1
 			
-			
-				
-			self.internal_combobox.set_active(i_id)
-			if len(self.iiface_model)>1:
-				self.external_combobox.set_active(e_id)
-			else:
-				self.external_combobox.set_active(0)
+		self.internal_combobox.set_active(i_id)
+		if len(self.iiface_model)>1:
+			self.external_combobox.set_active(e_id)
+		else:
+			self.external_combobox.set_active(0)
+
+		try:
 			proxy=n4d.Proxy(self.client,"NetworkManager","is_static")
 			if proxy.call(external):
 				self.manual_radiobutton.set_active(True)
-
 			ip=lliurex.net.get_ip(internal)
 			mask=lliurex.net.get_netmask(internal)
-		
 			self.internal_ip_entry.set_text(ip)
 			self.internal_mask_entry.set_text(mask)
-
-			
-			
 			ip=lliurex.net.get_ip(external)
 			self.external_mask_entry.set_text(lliurex.net.get_netmask(external))
 			self.external_gateway_entry.set_text(lliurex.net.get_default_gateway()[1])
@@ -239,10 +239,6 @@ class NetworkConfig:
 		
 			self.dns1_entry.set_text(dns1)
 			self.dns2_entry.set_text(dns2)
-		
-		
-
-			
 			return [True,""]
 				
 		except Exception as e:
@@ -251,11 +247,7 @@ class NetworkConfig:
 			f=top[0]
 			line=str(top[1])
 			txt="%s at line %s : %s"%(f,line,str(e))
-			
 			return [False,txt]
-			
-		
-		
 	#def set_default_gui_values
 	
 	def get_link_speed(self,widget,id):
