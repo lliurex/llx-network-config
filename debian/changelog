@@ -1,4 +1,4 @@
-llx-network-config (0.8.6) focal; urgency=medium
+llx-network-config (0.9) focal; urgency=medium
 
   * Focal release. Python3
 
