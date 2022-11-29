@@ -30,6 +30,7 @@ gettext.textdomain('llx-network-config')
 _ = gettext.gettext
 
 MARGIN=6
+DNS_FILE="/var/lib/dnsmasq/config/extra-dns"
 
 class NetworkConfig:
 	
@@ -181,8 +182,29 @@ class NetworkConfig:
 			var=self.client.get_variables()
 			internal=var["INTERNAL_INTERFACE"]
 			external=var["EXTERNAL_INTERFACE"]
-			dns1=var["DNS_EXTERNAL"][0]
-			dns2=var["DNS_EXTERNAL"][1]
+			
+			if os.path.exists(DNS_FILE):
+				try:
+					f=open(DNS_FILE)
+					lines=f.readlines()
+					f.close()
+					
+					dns_list=[]
+					for line in lines:
+						if "server=" in line:
+							dns_list.append(line.split("=")[1].strip())
+					
+					if len(dns_list)>1:
+						dns1=dns_list[0]
+						dns2=dns_list[1]
+					else:
+						raise Exception
+					
+				except Exception as e:
+					
+					dns1=var["DNS_EXTERNAL"][0]
+					dns2=var["DNS_EXTERNAL"][1]
+					
 		except Exception as e:
 			self.open_dialog(_("Network Configuration"),_("{}".format(e)),"dialog-information")
 		
