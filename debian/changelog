@@ -1,3 +1,9 @@
+llx-network-config (0.10) focal; urgency=medium
+
+  * using dns config file to read current dns
+
+ -- Hector Garcia Huerta <hectorgh@gmail.com>  Tue, 29 Nov 2022 11:44:05 +0100
+
 llx-network-config (0.9) focal; urgency=medium
 
   * Focal release. Python3
