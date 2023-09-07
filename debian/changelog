@@ -1,3 +1,9 @@
+llx-network-config (0.10lliurex23) jammy; urgency=medium
+
+  * Jammy release
+
+ -- Juanma1980 <juanma1980@gmail.com>  Thu, 07 Sep 2023 11:22:15 +0200
+
 llx-network-config (0.10) focal; urgency=medium
 
   * using dns config file to read current dns
